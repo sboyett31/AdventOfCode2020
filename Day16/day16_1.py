@@ -9,11 +9,11 @@ import re
 
 def main():
 	with open("day16_input", "r") as f:
-		data = f.read().splitlines()
+		data = f.read()
 		nearby_tix = []
 		nearby = False
 		your = False
-		for line in data:
+		for line in data.splitlines():
 			if "your" in line:
 				nearby = False
 				your = True
@@ -32,7 +32,6 @@ def main():
 
 	ranges = re.findall('(\d+)-(\d+)', data)  
 	for t in nearby_tix:
-		print(f"t is: {t}")
 		nums = re.findall('\d+', t) 
 		for n in nums:
 			valid = False
