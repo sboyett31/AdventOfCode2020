@@ -11,7 +11,6 @@ def main():
 	with open("day14_input", "r") as f:
 		data = f.read().splitlines()
 
-
 	mem = {}
 	instr_set = data
 	for inst in instr_set:
