@@ -18,20 +18,17 @@ def main():
 		nums[int(num)] = turn
 		turn += 1
 
-	print(nums)
 	num = 0
-	while turn <= 30000000:
-		print(f"turn is: {turn}")
+	while turn <= 2020:
 		if nums.get(num) is None:
 			next_num = 0
 		else:
 			next_num = turn - nums[num]
 		nums[num] = turn
 		turn+=1
-		if turn != 30000001:
+		if turn != 2021:
 			num = next_num
-	print(nums)
-	print(num)
+	print(f"Answer is: {num}")
 
 
 

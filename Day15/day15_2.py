@@ -8,27 +8,28 @@
 
 
 def main():
-	with open("day14_input", "r") as f:
-		data = f.read().splitlines()
+	with open("day15_input", "r") as f:
+		data = f.read().split(',')
 
-	mem = {}
-	instr_set = data
-	for inst in instr_set:
-		print(f"isnt is: {inst}")
-		if inst.startswith("mask"):
-			mask = [v for v in inst.split(" ")[2]]
+	nums = {}
+
+	turn = 1
+	for num in data:
+		nums[int(num)] = turn
+		turn += 1
+
+	num = 0
+	while turn <= 30000000:
+		if nums.get(num) is None:
+			next_num = 0
 		else:
-			val = [v for v in format(int(inst.split(' ')[2]), 'b').zfill(len(mask))]
-			for i in range(len(mask)):
-				print(f"i is: {i}")
-				val[i] = mask[i] if mask[i] != "X" else val[i]
-			val = "".join(val)
-			print(f"val is: {val}")
-			print(f"int_val is: {int(val, base=2)}")
-			mem[inst.split("[")[1].split("]")[0]] = int(val, base=2)
+			next_num = turn - nums[num]
+		nums[num] = turn
+		turn+=1
+		if turn != 30000001:
+			num = next_num
+	print(f"Answer is: {num}")
 
-	print(mem)
-	print(f"Answer is: {sum([v for v in mem.values()])}")
 
 
 if __name__=="__main__":
