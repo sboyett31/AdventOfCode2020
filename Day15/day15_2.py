@@ -30,8 +30,6 @@ def main():
 			num = next_num
 	print(f"Answer is: {num}")
 
-
-
 if __name__=="__main__":
 	main()
 
